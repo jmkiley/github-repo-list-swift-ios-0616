@@ -10,6 +10,21 @@ import UIKit
 
 class GithubRepository {
     
+    var fullName: String
+    var htmlURL: NSURL
+    var repositoryID: String
     
-    
+    init(dictionary: NSDictionary) {
+        guard let
+        name = dictionary["full_name"] as? String,
+        valueAsString = dictionary["html_url"] as? String,
+        valueAsURL = NSURL(string: valueAsString),
+        repoID = dictionary["id"]?.stringValue
+            else {fatalError("Sorry, no go")}
+        
+        fullName = name
+        htmlURL = valueAsURL
+        repositoryID = repoID
+
+    }
 }
